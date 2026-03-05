@@ -498,6 +498,9 @@ class TradingCore:
         """Initialize a V2 strategy using consolidated approach."""
         v2_strategy_class, config = self.load_v2_class(self.strategy_name)
 
+        # Store config for the hummingbot config command display
+        self.strategy_config_map = ClientConfigAdapter(config)
+
         # Get markets from V2 class
         markets_list = [(conn, list(pairs)) for conn, pairs in v2_strategy_class.markets.items()]
 
